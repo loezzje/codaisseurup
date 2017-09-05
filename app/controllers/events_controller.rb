@@ -22,7 +22,9 @@ class EventsController < ApplicationController
    end
  end
 
- def edit; end
+ def edit
+   @event = Event.find(params[:id])
+ end
 
  def update
    if @event.update(event_params)
@@ -40,9 +42,9 @@ class EventsController < ApplicationController
 
  def event_params
    params
-     .require(:event_params)
+     .require(:event)
      .permit(
-       :name, :description, :location, :price, :capacity, :includes_food, :includes_drinks, :starts_at, :ends_at, :active
+       :name, :description, :location, :price, :capacity, :includes_food, :includes_drinks, :starts_at, :ends_at
      )
  end
 end
