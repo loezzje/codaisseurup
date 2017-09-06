@@ -7,5 +7,13 @@ class Event < ApplicationRecord
   validates :starts_at, presence: true
   validates :ends_at, presence: true
 
+  # validate :end_time_needs_to_be_before_start_time
+  #
+  # def end_time_needs_to_be_before_start_time
+  #   if :ends_at < :starts_at
+  #     errors.add(:end_time, "Wrong")
+  #   end
+  # end
+
 
 end
