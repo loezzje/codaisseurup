@@ -6,8 +6,8 @@ FactoryGirl.define do
     capacity        10
     includes_food   true
     includes_drinks true
-    starts_at       { Faker::Time.between(DateTime.now - 2, DateTime.now - 1) }
-    ends_at         { Faker::Time.between(DateTime.now - 1, DateTime.now)}
+    starts_at       "2017/04/01 17:00"
+    ends_at         "2017/04/01 18:00"
 
     price           { Faker::Commerce.price }
     user            { build(:user) }
