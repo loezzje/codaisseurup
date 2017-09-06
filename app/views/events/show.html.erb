@@ -25,6 +25,11 @@
       <li><%= !@event.includes_drinks ? ("<del>Drinks</del>").html_safe : "Drinks" %></li>
     </ul>
 
+    <h4>Categories</h4>
+    <% @categories.each do |category| %>
+    <span class="label-success"> <%= category.name %></span>
+    <% end %>
+
   <h4>Price: <%= @event.price %></h4>
 
   <%= link_to "Edit", edit_event_path, class: "btn btn-primary" %>
