@@ -68,5 +68,11 @@ end
   def image_params
    params[:images].present? ? params.require(:images) : []
   end
+  # def image_params
+  #   return params.require(:images) if params[:images].present
+  #   []
+  #   end
+  # end
+
 
 end
