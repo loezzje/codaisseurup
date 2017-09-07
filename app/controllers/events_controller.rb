@@ -16,27 +16,27 @@ class EventsController < ApplicationController
  end
 
  def create
-   @event = current_user.events.build(event_params)
+  @room = current_user.events.build(event_params)
 
-   if @event.save
+  if @event.save
+    image_params.each do |image|
+      @event.photos.create(image: image)
+    end
 
-     image_params.each do |image|
-       @event.images.create(image: image)
-     end
+    redirect_to edit_event_path(@room), notice: "Event  created"
+  else
+    render :new
+  end
+end
 
-     redirect_to @event, notice: "Event created"
-   else
-     render :new
-   end
- end
 
  def edit
-
-   if current_user.id = @event.user.id
+   if current_user.id == @event.user.id
      @photos = @event.photos
    else
      redirect_to root_path, notice: "You don't have permission."
   #  @event = Event.find(params[:id])
+    end
  end
 
  def update
@@ -65,8 +65,8 @@ class EventsController < ApplicationController
      )
  end
 
- def image_params
-   return params.require(:images) if params[:images].present?
-   []
- end
+  def image_params
+   params[:images].present? ? params.require(:images) : []
+  end
+
 end
