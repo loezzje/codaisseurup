@@ -26,6 +26,13 @@ RSpec.describe Event, type: :model do
       expect(event.errors).to have_key(:ends_at)
     end
 
+    it "Is invalid with a starting time that is later than the end time" do
+          event = Event.new(starts_at: "4/9/2016 10:00", ends_at: "5/9/2017 10:00")
+
+          event.valid?
+          expect(event.errors).to have_key(:ends_at)
+        end
+
     # it "is not possible to have an end time that is before the start time" do
     #   event = Event.new(starts_at: "2018/01/01 15:00", ends_at: "2017/01/01 14:00")
     #   event.valid?
