@@ -30,21 +30,22 @@
     <span class="label-success"> <%= category.name %></span>
     <% end %>
 
-  <h4>Price: <%= @event.price %></h4>
+    <h4>Price: <%= @event.price %></h4>
 
-  <h4>Photos</h4>
-    <% @event.photos.each do |photo| %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= image_tag photo.image.thumbnail %>
+    <h4>Photos</h4>
+    <div class="row">
+      <% @event.photos.each do |photo| %>
+      <div class="col-md-4">
+      <%= image_tag photo.image.thumbnail %>
       </div>
+      <% end %>
     </div>
-    <% end %>
 
-  <h4>Public?</h4>
-    <p><%= @event.active ? "Published" : "Private" %></p>
 
-  <%= link_to "Edit", edit_event_path, class: "btn btn-primary" %>
+    <h4>Public?</h4>
+      <p><%= @event.active ? "Published" : "Private" %></p>
+
+    <%= link_to "Edit", edit_event_path, class: "btn btn-primary" %>
 
   </div>
 </div>
