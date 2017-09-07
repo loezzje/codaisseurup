@@ -32,6 +32,14 @@
 
   <h4>Price: <%= @event.price %></h4>
 
+  <h4>Photos</h4>
+    <% @event.photos.each do |photo| %>
+    <%= image_tag photo.image %>
+    <% end %>
+
+  <h4>Public?</h4>
+    <p><%= @event.active ? "Published" : "Private" %></p>
+
   <%= link_to "Edit", edit_event_path, class: "btn btn-primary" %>
 
   </div>

@@ -59,6 +59,12 @@
   <% end %>
 
 
+    <label>Publish this place?</label>
+    <div class="form-group">
+      <input name="event[active]" type="hidden" value="0"><input type="checkbox" value="1" name="event[active]" id="event_active"> Make public
+    </div>
+
+
   <div class="actions">
   <%= f.submit "Save", class: "btn btn-primary" %>
 </div>
