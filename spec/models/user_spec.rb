@@ -16,5 +16,20 @@ RSpec.describe User, type: :model do
   it "deletes associated events" do
     expect { user.destroy }.to change(Event, :count).by(-1)
   end
-end
+
+
+  end
+
+  describe "association with registration" do
+    let(:participant) {create :user, email: "participant@user.com"}
+    let(:organiser) { create :user, email: "organiser@user.com"}
+
+    let!(:event) { create :event, user: organiser }
+    let!(:registration) {create :registration, event: event, user: participant }
+
+    it "has registered events" do
+      expect(participant.registered_events).to include(event)
+    end
+  end
+
 end

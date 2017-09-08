@@ -16,14 +16,14 @@ class EventsController < ApplicationController
  end
 
  def create
-  @room = current_user.events.build(event_params)
+  @event = current_user.events.build(event_params)
 
   if @event.save
     image_params.each do |image|
       @event.photos.create(image: image)
     end
 
-    redirect_to edit_event_path(@room), notice: "Event  created"
+    redirect_to edit_event_path(@event), notice: "Event  created"
   else
     render :new
   end

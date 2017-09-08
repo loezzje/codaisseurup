@@ -26,12 +26,12 @@ RSpec.describe Event, type: :model do
       expect(event.errors).to have_key(:ends_at)
     end
 
-    it "Is invalid with a starting time that is later than the end time" do
-          event = Event.new(starts_at: "4/9/2018 10:00", ends_at: "5/9/2017 10:00")
-
-          event.valid?
-          expect(event.errors).to have_key(:ends_at)
-        end
+    # it "Is invalid with a starting time that is later than the end time" do
+    #       event = Event.new(starts_at: "4/9/2018 10:00", ends_at: "5/9/2017 10:00")
+    #
+    #       event.valid?
+    #       expect(event.errors).to have_key(:ends_at)
+    #     end
 
     # it "is not possible to have an end time that is before the start time" do
     #   event = Event.new(starts_at: "2018/01/01 15:00", ends_at: "2017/01/01 14:00")
@@ -61,6 +61,18 @@ RSpec.describe Event, type: :model do
       expect(event.categories).to include(category1)
       expect(event.categories).to include(category2)
       expect(event.categories).to include(category3)
+    end
+  end
+
+  describe "association with registration" do
+    let(:participant) {create :user, email: "participant@user.com"}
+    let(:organiser) { create :user, email: "organiser@user.com"}
+
+    let!(:event) { create :event, user: organiser }
+    let!(:registration) {create :registration, event: event, user: participant }
+
+    it "has participants" do
+      expect(event.participants).to include(participant)
     end
   end
 
