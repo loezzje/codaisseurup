@@ -48,6 +48,8 @@ gem 'carrierwave', '0.11.2'
 
 #use cloudinary to store images
 gem 'cloudinary', '1.2.3'
+gem 'active_model_serializers'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
