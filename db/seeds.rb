@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+  # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first
 Photo.destroy_all
-Registrations.destroy_all
+Registration.destroy_all
 Profile.destroy_all
 Event.destroy_all
 Category.destroy_all
@@ -25,6 +25,7 @@ beach = Category.create!(name: "Beach")
 park = Category.create!(name: "Park")
 
 marloes = User.create!(email: "marloes@email.com", password: "ThisPassword")
+john = Usert.create!(emails: "john@email.com", password: "12345")
 
 event1 = Event.create!(name: "Cycling", description: "Cycle to the beach", location: "Haarlem", price: 2.00, capacity: 10, includes_food: true, includes_drinks: true, starts_at: "2017-04-02", ends_at: "2017-04-02", active: true, user: marloes, categories: [sports, beach, outdoor])
 event2 = Event.create!(name: "Hiking", description: "Hike to the park", location: "Amsterdam", price: 10.00, capacity: 20, includes_food: true, includes_drinks: false, starts_at: "2017-04-02", ends_at: "2017-04-02", active: false, user: marloes, categories: [park, sports, outdoor])
@@ -33,3 +34,6 @@ event3 = Event.create!(name: "Drink Beer", description: "Enjoy your friday after
 photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/donloyoc5/image/upload/v1504786635/kitten2_c0n0fj.webp", event: event2)
 photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/donloyoc5/image/upload/v1504786636/kitten_ye5zcs.jpg", event: event2)
 photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/donloyoc5/image/upload/v1504786636/cycling_h5kvz9.jpg", event: event1)
+
+registration.create!(event: event1, user: marloes, price: 50, total: 100)
+registration.create!(event: event2, user: john, price: 60, total: 120)
