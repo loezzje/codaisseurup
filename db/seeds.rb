@@ -25,7 +25,7 @@ beach = Category.create!(name: "Beach")
 park = Category.create!(name: "Park")
 
 marloes = User.create!(email: "marloes@email.com", password: "ThisPassword")
-john = Usert.create!(emails: "john@email.com", password: "12345")
+john = User.create!(email: "john@email.com", password: "123456")
 
 event1 = Event.create!(name: "Cycling", description: "Cycle to the beach", location: "Haarlem", price: 2.00, capacity: 10, includes_food: true, includes_drinks: true, starts_at: "2017-04-02", ends_at: "2017-04-02", active: true, user: marloes, categories: [sports, beach, outdoor])
 event2 = Event.create!(name: "Hiking", description: "Hike to the park", location: "Amsterdam", price: 10.00, capacity: 20, includes_food: true, includes_drinks: false, starts_at: "2017-04-02", ends_at: "2017-04-02", active: false, user: marloes, categories: [park, sports, outdoor])
@@ -35,5 +35,5 @@ photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/donloyoc5/im
 photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/donloyoc5/image/upload/v1504786636/kitten_ye5zcs.jpg", event: event2)
 photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/donloyoc5/image/upload/v1504786636/cycling_h5kvz9.jpg", event: event1)
 
-registration.create!(event: event1, user: marloes, price: 50, total: 100)
-registration.create!(event: event2, user: john, price: 60, total: 120)
+Registration.create!(event: event1, user: marloes, status: true, price: 50.00, guest_count: 4)
+Registration.create!(event: event2, user: john, status: true, price: 60.00, guest_count: 2)
